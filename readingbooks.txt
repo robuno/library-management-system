@@ -1,0 +1,2 @@
+1,Bulanti,PQ 2637.A82 B85 2010 c.1,ReadingBook,Jean Paul Sartre,Can Yayinlari,TR,2010,11,239,9789755102108,Fransiz Edebiyati
+3,Kozmos,QB 44.2.S2419 2020,ReadingBook,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
