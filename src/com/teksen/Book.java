@@ -7,12 +7,12 @@ public class Book extends Item {
     private int year;
     private int edition;
     private int pageNumber;
-    private int ISBN;
+    private String ISBN;
 
 
-    public Book(int id, int itemType, String title, String locationInformation, boolean status,
+    public Book(int id, String itemType, String title, String locationInformation, String status,
                 String author, String publisher, String language,
-                int year, int edition, int pageNumber, int ISBN) {
+                int year, int edition, int pageNumber, String ISBN) {
         super(id,itemType, title, locationInformation, status);
         this.author = author;
         this.publisher = publisher;
@@ -51,7 +51,7 @@ public class Book extends Item {
         this.pageNumber = pageNumber;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -81,20 +81,20 @@ public class Book extends Item {
         return pageNumber;
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
-                "author='" + author + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", language='" + language + '\'' +
-                ", year=" + year +
-                ", edition=" + edition +
-                ", pageNumber=" + pageNumber +
-                ", ISBN=" + ISBN +
-                '}';
+        return
+                super.toString()+","+
+                author+","+
+                publisher+","+
+                language+","+
+                year+","+
+                edition+","+
+                pageNumber+","+
+                ISBN;
     }
 }

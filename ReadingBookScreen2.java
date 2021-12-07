@@ -1,3 +1,4 @@
+
 package com.teksen;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ReadingBookScreen extends JFrame{
+public class ReadingBookScreen2 extends JFrame{
 
     private JPanel mainPanel;
     private JTable table1;
@@ -26,10 +27,9 @@ public class ReadingBookScreen extends JFrame{
     private JTextField textFieldGenre;
     private JButton addNewReadingBookButton;
     private JButton deleteButton;
-    private JTextField statusTextField;
     //private ArrayList<ArrayList<String>> allItems = getItemsArrayList();
 
-    public ReadingBookScreen() {
+    public ReadingBookScreen2() {
         add(mainPanel);
         setSize(1400,700);
         setTitle("Items Screen");
@@ -41,16 +41,12 @@ public class ReadingBookScreen extends JFrame{
         String[][] readingBookArray = getReadingBookArray(books);
         createTable(readingBookArray);
 
-        ArrayList<ReadingBook> readingBooksArrayList = createReadingBookClassArray(books);
-
         addNewReadingBookButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<ArrayList<String>> allItems = getItemsArrayList();
                 ArrayList<ArrayList<String>> books = getReadingBookArrayList(allItems);
                 String[][] readingBookArray = getReadingBookArray(books);
-                ArrayList<ReadingBook> readingBooksArrayList = createReadingBookClassArray(books);
-
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 pressAddBookButton(modelTable);
             }
@@ -62,8 +58,6 @@ public class ReadingBookScreen extends JFrame{
                 ArrayList<ArrayList<String>> allItems = getItemsArrayList();
                 ArrayList<ArrayList<String>> books = getReadingBookArrayList(allItems);
                 String[][] readingBookArray = getReadingBookArray(books);
-                ArrayList<ReadingBook> readingBooksArrayList = createReadingBookClassArray(books);
-
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 pressDeleteBookButton(modelTable, allItems);
 
@@ -75,28 +69,29 @@ public class ReadingBookScreen extends JFrame{
         System.out.println(getLastItemID());
         String newBookText = "\n"+ ( getLastItemID()+1) +","+
                 textFieldTitle.getText() +","+textFieldLocation.getText()+","+
-                readingBookTextField.getText()+","+statusTextField.getText()+","+
-                textFieldAuthor.getText() +","+ textFieldPublisher.getText()+","+
-                textFieldLang.getText()+","+ textFieldYear.getText()+","+
-                textFieldEdition.getText()+","+textFieldPageNo.getText()+","+
-                textFieldISBN.getText()+","+ textFieldGenre.getText();
+                readingBookTextField.getText()+","+ textFieldAuthor.getText() +","+
+                textFieldPublisher.getText()+","+textFieldLang.getText()+","+
+                textFieldYear.getText()+","+textFieldEdition.getText()+","+
+                textFieldPageNo.getText()+","+textFieldISBN.getText()+","+
+                textFieldGenre.getText();
 
         writeToTxt(newBookText,"items.txt",true);
+
+        ArrayList<ArrayList<String>> allItems2 = getItemsArrayList();
 
         modelTable.addRow(new Object[] {
                 getLastItemID(),
                 textFieldTitle.getText(),
                 textFieldLocation.getText(),
                 readingBookTextField.getText(),
-                statusTextField.getText(),
                 textFieldAuthor.getText(),
-                textFieldPublisher.getText(),
-                textFieldLang.getText(),
-                textFieldYear.getText(),
                 textFieldEdition.getText(),
-                textFieldPageNo.getText(),
                 textFieldISBN.getText(),
-                textFieldGenre.getText()
+                textFieldGenre.getText(),
+                textFieldLang.getText(),
+                textFieldPageNo.getText(),
+                textFieldPublisher.getText(),
+                textFieldYear.getText()
         });
     }
 
@@ -110,27 +105,16 @@ public class ReadingBookScreen extends JFrame{
             for(int i=0; i<allItems.size(); i++) {
                 for(int j = 0; j< allItems.get(0).size(); j++) {
                     if( Integer.parseInt(allItems.get(i).get(0)) ==selectedRowID) {
-                        //System.out.print(allItems.get(i).get(j)+",");
+                        System.out.print(allItems.get(i).get(j)+",");
                         rowWillBeDeleted =i;
                     }
                 }
             }
-            //System.out.println("rowWillBeDeleted: "+rowWillBeDeleted);
+            System.out.println("rowWillBeDeleted: "+rowWillBeDeleted);
             allItems.remove(rowWillBeDeleted);
             //getReadingBookArray(allItems);
 
             String newBookText = "";
-
-            /*
-            ArrayList<ArrayList<String>> books = getReadingBookArrayList(allItems);
-            ArrayList<ReadingBook> readingBooksClassArrayList = createReadingBookClassArray(books);
-            for(int i=0; i< readingBooksClassArrayList.size();i++) {
-                System.out.println(readingBooksClassArrayList.get(i));
-                newBookText += readingBooksClassArrayList.get(i)+"\n";
-            }
-             */
-
-
             for(int i=0; i< allItems.size(); i++) {
                 for(int j=0; j<allItems.get(i).size();j++) {
                     newBookText += allItems.get(i).get(j);
@@ -191,14 +175,19 @@ public class ReadingBookScreen extends JFrame{
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
+
                 String[] singleItem = data.split(",",0);
+
                 ArrayList<String> aBook = new ArrayList<String>();
 
                 for(int i=0; i < singleItem.length;i++) {
                     aBook.add(singleItem[i]);
                 }
+
                 items.add(aBook);
+
                 //System.out.println(aBook);
+
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -211,8 +200,10 @@ public class ReadingBookScreen extends JFrame{
     }
 
     private void writeToTxt(String data, String file,boolean appendOrWriteAll) {
+
         try {
             //System.out.println(newBookText);
+
             File f1 = new File(file);
             FileWriter fileWritter = new FileWriter(f1.getName(),appendOrWriteAll);
             BufferedWriter bw = new BufferedWriter(fileWritter);
@@ -221,27 +212,64 @@ public class ReadingBookScreen extends JFrame{
         } catch(IOException e2){
             e2.printStackTrace();
         }
+
+
     }
 
-
-
-
-    private ArrayList<ArrayList<String>> getItemsArrayList() {
+    private int numberOfItems() {
         ArrayList<ArrayList<String>> items = new ArrayList<>();
+
         try {
             File myObj = new File("items.txt");
             Scanner myReader = new Scanner(myObj);
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
+
                 String[] singleItem = data.split(",",0);
+
                 ArrayList<String> aBook = new ArrayList<String>();
 
                 for(int i=0; i < singleItem.length;i++) {
                     aBook.add(singleItem[i]);
                 }
+
                 items.add(aBook);
+
                 //System.out.println(aBook);
+
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return items.size();
+    }
+
+
+    private ArrayList<ArrayList<String>> getItemsArrayList() {
+        ArrayList<ArrayList<String>> items = new ArrayList<>();
+
+        try {
+            File myObj = new File("items.txt");
+            Scanner myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+
+                String[] singleItem = data.split(",",0);
+
+                ArrayList<String> aBook = new ArrayList<String>();
+
+                for(int i=0; i < singleItem.length;i++) {
+                    aBook.add(singleItem[i]);
+                }
+
+                items.add(aBook);
+
+                //System.out.println(aBook);
+
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -251,10 +279,6 @@ public class ReadingBookScreen extends JFrame{
 
         return items;
     }
-
-
-
-
     private ArrayList<ArrayList<String>> getReadingBookArrayList(ArrayList<ArrayList<String>> items) {
         ArrayList<ArrayList<String>> books = new ArrayList<>();
 
@@ -263,17 +287,18 @@ public class ReadingBookScreen extends JFrame{
                 books.add(items.get(i));
             }
         }
+
         //System.out.println();
         //System.out.println(books);
+
         return books;
     }
-
-
 
 
     private String[][] getReadingBookArray(ArrayList<ArrayList<String>> books) {
 
         //System.out.println(books);
+
         String[][] readingBooksArray = new String[books.size()][books.get(1).size()];
         for(int i =0; i < readingBooksArray.length; i++) {
             for(int j=0; j < readingBooksArray[0].length ; j++) {
@@ -289,69 +314,19 @@ public class ReadingBookScreen extends JFrame{
         return readingBooksArray;
     }
 
+    private void createReadingBookClassArray(String[][] readingBooksArray) {
 
-
-    private ArrayList<ReadingBook> createReadingBookClassArray(ArrayList<ArrayList<String>> itemsArrayList) {
-        ArrayList<ReadingBook> readingBookClassArray = new ArrayList<>();
-
-        for(int i=0; i<itemsArrayList.size();i++) {
-
-            ReadingBook aNewReadingBook = new ReadingBook(
-                    Integer.parseInt(itemsArrayList.get(i).get(0)), // int id
-                    itemsArrayList.get(i).get(3), // String itemType
-                    itemsArrayList.get(i).get(1), // String title
-                    itemsArrayList.get(i).get(2), // String locationInformation
-                    itemsArrayList.get(i).get(4), // String status
-                    itemsArrayList.get(i).get(5), // String author
-                    itemsArrayList.get(i).get(6), // String publisher
-                    itemsArrayList.get(i).get(7), // String language
-                    Integer.parseInt(itemsArrayList.get(i).get(8)), // int year
-                    Integer.parseInt(itemsArrayList.get(i).get(9)), // int edition
-                    Integer.parseInt(itemsArrayList.get(i).get(10)), // int page number
-                    itemsArrayList.get(i).get(11), // String ISBN
-                    itemsArrayList.get(i).get(12) // String genre
-                    );
-
-            readingBookClassArray.add(aNewReadingBook);
-            System.out.println(aNewReadingBook);
-
-            /*
-            System.out.println(
-                    "i0: "+Integer.parseInt(itemsArrayList.get(i).get(0))+",  "+
-                    "i3: "+itemsArrayList.get(i).get(3)+",  "+
-                    "i1: "+itemsArrayList.get(i).get(1)+",  "+
-                    "i2: "+itemsArrayList.get(i).get(2)+",  "+
-                    "i3: "+itemsArrayList.get(i).get(3)+",  "+
-                    "i4: "+itemsArrayList.get(i).get(4)+",  "+
-                    "i5: "+itemsArrayList.get(i).get(5)+",  "+
-                    "i6: "+itemsArrayList.get(i).get(6)+",  "+
-                    "i7: "+itemsArrayList.get(i).get(7)+",  "+
-                    "i8: "+Integer.parseInt(itemsArrayList.get(i).get(8))+",  "+
-                    "i9: "+Integer.parseInt(itemsArrayList.get(i).get(9))+",  "+
-                    "i10: "+Integer.parseInt(itemsArrayList.get(i).get(10))+",  "+
-                    "i11: "+itemsArrayList.get(i).get(11)+",  "+
-                    "i12: "+itemsArrayList.get(i).get(12));
-            */
-            //System.out.println();
-        }
-
-        /*
-        System.out.println("---------------------------------");
-        for(int i=0; i< readingBookClassArray.size();i++) {
-            System.out.println(readingBookClassArray.get(i));
-        }
-
-         */
-        return readingBookClassArray;
     }
 
     private void createTable(String[][] readingBooksArray) {
         table1.setModel(new DefaultTableModel(
                 readingBooksArray,
-                new String[]{"ID","Title","Location","Item Type","Status",
+                new String[]{"ID","Title","Location","Item Type",
                         "Author","Publisher","Language","Year","Edition",
                         "Page Number","ISBN","Field"}
         ));
 
     }
 }
+
+

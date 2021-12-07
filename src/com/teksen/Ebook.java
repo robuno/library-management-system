@@ -3,9 +3,9 @@ package com.teksen;
 public class Ebook extends Book{
     private String url;
 
-    public Ebook(int id, int itemType, String title, String locationInformation, boolean status,
+    public Ebook(int id, String itemType, String title, String locationInformation, String status,
                  String author, String publisher, String language,
-                 int year, int edition, int pageNumber, int ISBN,
+                 int year, int edition, int pageNumber, String ISBN,
                  String url) {
         super(id, itemType, title, locationInformation, status,
                 author, publisher, language,

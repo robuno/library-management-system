@@ -1,10 +1,5 @@
 1,Bulanti,PQ 2637.A82 B85 2010 c.1,ReadingBook,Available,Jean Paul Sartre,Can Yayinlari,TR,2010,11,239,9789755102108,Fransiz Edebiyati
-2,Computer Networking,TK 5105.875.I57 K87 2013 c.1,TextBook,Available,James Kurose,Pearson,EN,2013,6,888,0273768964,Computer Science
 3,Kozmos,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-4,Se7en,PN 1997.F56.S63 2011,Digital,Available,David Fincher,Tiglon,Crime,EN,DVD,8680979011133,127,1995
-5,JavaLateObjects,ONLINE,ETextBook,Available,Paul J. Deitel,Pearson,EN,2020,11,1244,9781292273730,xxxx,Computer Science
-6,Journal of network and computer applications,ONLINE,EJournal,Available,Elsevier,1084-8045,Computer Networks,xxx,true
-7,SpinModel,ONLINE,Article,Available,Nihat Berker & E.Can Artun,Kadir Has University,Phys. Rev. E 104, 044131, 1-6 (2021),condensed matter,arXiv,10.1103/PhysRevE.104.04413
 8,Kozmos8,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
 9,Kozmos9,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
 10,Kozmos10,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
@@ -23,3 +18,5 @@
 24,yirmincikitap4,ONYEDI 17,ReadingBook,Available,author17,publisher17,OY,1998,33,300,444444444,Roman
 25,TITLEEEE,LOCATI,ReadingBook,Available,AUTHORRRRRR,PUBLISHERRRRR,LANGGGGGGGGGG,2021,35,400,5555555555555,Romanci
 26,BASLİK,KONUM,ReadingBook,Available,YAZAR,YAYİNCİ,DİL,1945,38,500,66666666,Romancik
+27,title5,loc5,ReadingBook,Available,aut5,pub5,LF,1995,55,555,55555555,Romanbes
+29,title52,loc5,ReadingBook,Available,aut5,pub5,LF,1995,55,555,55555555,Romanbes

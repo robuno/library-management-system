@@ -2,12 +2,12 @@ package com.teksen;
 
 public abstract class Item {
     private int id;
-    private int itemType;
+    private String itemType;
     private String title;
     private String locationInformation;
-    private boolean status;
+    private String status;
 
-    public Item(int id, int itemType, String title, String locationInformation, boolean status) {
+    public Item(int id, String itemType, String title, String locationInformation, String status) {
         this.id = id;
         this.itemType = itemType;
         this.title = title;
@@ -16,7 +16,7 @@ public abstract class Item {
 
     }
 
-    public int getItemType() {
+    public String getItemType() {
         return itemType;
     }
 
@@ -33,18 +33,16 @@ public abstract class Item {
         return locationInformation;
     }
 
-    public boolean isStatus() {
+    public String isStatus() {
         return status;
     }
 
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", itemType=" + itemType +
-                ", title='" + title + '\'' +
-                ", locationInformation='" + locationInformation + '\'' +
-                ", status=" + status +
-                '}';
+        return  id+","+
+                title+","+
+                locationInformation+","+
+                itemType+","+
+                status;
     }
 }

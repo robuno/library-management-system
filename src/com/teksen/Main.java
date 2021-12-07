@@ -59,6 +59,9 @@ public class Main {
                 ReadingBookScreen rBScreen = new ReadingBookScreen();
                 rBScreen.setVisible(true);
 
+                //LoanItemScreen lIScreen = new LoanItemScreen();
+                //lIScreen.setVisible(true);
+
 
             }
         });

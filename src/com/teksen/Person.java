@@ -2,19 +2,31 @@ package com.teksen;
 
 public abstract class Person {
     private int id;
-    private String name;
+    private String firstName;
     private String lastName;
     private String mail;
     private String address;
     private String password;
+    private String personType;
 
+
+    public Person(int id, String firstName, String lastName, String mail,
+                  String address, String password, String personType) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mail = mail;
+        this.address = address;
+        this.password = password;
+        this.personType = personType;
+    }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
@@ -33,12 +45,18 @@ public abstract class Person {
         this.password = password;
     }
 
+    public void setPersonType(String personType) {
+        this.personType = personType;
+    }
+
+
+
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getLastName() {
@@ -55,5 +73,9 @@ public abstract class Person {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPersonType() {
+        return personType;
     }
 }

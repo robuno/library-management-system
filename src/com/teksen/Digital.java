@@ -6,14 +6,14 @@ public class Digital extends Item{
     private String topic;
     private String language;
     private String physicalProperty;
-    private int ISBN;
+    private String ISBN;
     private int time;
     private int year;
 
-    public Digital(int id, int itemType, String title, String locationInformation, boolean status,
+    public Digital(int id, String itemType, String title, String locationInformation, String status,
                    String director, String company, String topic,
                    String language, String physicalProperty,
-                   int ISBN, int time, int year) {
+                   String ISBN, int time, int year) {
         super(id,itemType, title, locationInformation, status);
         this.director = director;
         this.company = company;
@@ -46,7 +46,7 @@ public class Digital extends Item{
         this.physicalProperty = physicalProperty;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -78,7 +78,7 @@ public class Digital extends Item{
         return physicalProperty;
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 

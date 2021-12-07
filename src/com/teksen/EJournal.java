@@ -7,7 +7,7 @@ public class EJournal extends Item{
     private String url;
     private boolean isPeerReviewed;
 
-    public EJournal(int id, int itemType, String title, String locationInformation, boolean status,
+    public EJournal(int id, String itemType, String title, String locationInformation, String status,
                     String publisher, String ISSN, String topic,
                     String url, boolean isPeerReviewed) {
         super(id,itemType, title, locationInformation, status);

@@ -8,7 +8,7 @@ public class Article extends Item{
     private String database;
     private String doi;
 
-    public Article(int id, int itemType, String title, String locationInformation, boolean status,
+    public Article(int id, String itemType, String title, String locationInformation, String status,
                    String author, String institution, String source,
                    String keyword1, String database, String doi) {
         super(id,itemType, title, locationInformation,status);

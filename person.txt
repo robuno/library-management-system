@@ -1,0 +1,3 @@
+1,Unat,Teksen,unat@unat.com,Basaksehir,passwUnat,Student,20181701048
+2,Mark,Zuckerberg,mark@fb.com,SF,passwMark,Student,2000000000
+3,Elon,Musk,
