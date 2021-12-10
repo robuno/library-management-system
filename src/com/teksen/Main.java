@@ -1,10 +1,6 @@
 package com.teksen;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 
@@ -46,7 +42,7 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ItemsScreen s = new ItemsScreen();
+                mainPage s = new mainPage();
                 s.setVisible(true);
 
 
@@ -56,11 +52,21 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ReadingBookScreen rBScreen = new ReadingBookScreen();
-                rBScreen.setVisible(true);
+
+                mainPage itScreen = new mainPage();
+                itScreen.setVisible(true);
+
+
+                //ReadingBookScreen rBScreen = new ReadingBookScreen();
+                //rBScreen.setVisible(true);
 
                 //LoanItemScreen lIScreen = new LoanItemScreen();
                 //lIScreen.setVisible(true);
+
+                //DigitalScreen digiScreen = new DigitalScreen();
+                //digiScreen.setVisible(true);
+
+
 
 
             }

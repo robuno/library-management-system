@@ -2,99 +2,86 @@ package com.teksen;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ItemsScreen extends JFrame{
     private JPanel mainPanel;
     private JTable table1;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
+    private JTextField searchTitleTextField;
+    private JButton buttonSearchTitle;
+
+    private ArrayList<Digital> digitalArrayList;
+    private ArrayList<ReadingBook> readingBookArrayList;
+    private ArrayList<Item> itemArrayList;
 
     public ItemsScreen() {
         add(mainPanel);
-        setSize(800,400);
+        setSize(1400,700);
         setTitle("Items Screen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        createTable();
+
     }
 
-    public JPanel getMainPanel() {
-        return mainPanel;
+    public ItemsScreen(ArrayList<Digital> digitalArrayList,ArrayList<ReadingBook> readingBookArrayList) {
+        add(mainPanel);
+        setSize(1400,700);
+        setTitle("Items Screen");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        this.digitalArrayList = digitalArrayList;
+        this.readingBookArrayList = readingBookArrayList;
+
+        itemArrayList = createItemArrayList(digitalArrayList,readingBookArrayList);
+        String[][] itemArray = getItemArray(itemArrayList);
+        createTable(itemArray);
+
+        String[] labelOfTable = new String[] {"ID","Title","Location","Item Type","Status"};
+
+        buttonSearchTitle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String searchedTitle = searchTitleTextField.getText();
+                SearchScreen searchScreenDigital = new SearchScreen(searchedTitle,itemArray,labelOfTable,1,5);
+                searchScreenDigital.setVisible(true);
+            }
+        });
     }
 
-    private void createTable() {
+    private ArrayList<Item> createItemArrayList(ArrayList<Digital> digitalArrayList,
+                                                ArrayList<ReadingBook> readingBookArrayList) {
+        ArrayList<Item> itemArrayList = new ArrayList<>();
 
-        ArrayList<ArrayList<String>> books = new ArrayList<>();
+        itemArrayList.addAll(readingBookArrayList);
+        itemArrayList.addAll(digitalArrayList);
 
-        try {
-            File myObj = new File("items.txt");
-            Scanner myReader = new Scanner(myObj);
-
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                String[] singleBook = data.split(",",0);
-
-                ArrayList<String> aBook = new ArrayList<String>();
-                books.add(aBook);
-
-                aBook.add(singleBook[0]);
-                aBook.add(singleBook[1]);
-                aBook.add(singleBook[2]);
-                aBook.add(singleBook[3]);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+        System.out.println("***");
+        for(int i=0; i<itemArrayList.size();i++) {
+            System.out.println(itemArrayList.get(i));
         }
 
+        return itemArrayList;
+    }
 
-        String[][] booksArray = new String[books.size()][books.get(1).size()];
-        for(int i =0; i < booksArray.length; i++) {
-            for(int j=0; j < booksArray[3].length; j++) {
-                booksArray[i][j] = books.get(i).get(j);
-            }
+    public String[][] getItemArray(ArrayList<Item> itemArrayList) {
+        String[][] itemArray = new String[itemArrayList.size()][5];
+        for(int i=0; i < itemArrayList.size();i++) {
+            itemArray[i][0] = String.valueOf(itemArrayList.get(i).getId());
+            itemArray[i][1] = itemArrayList.get(i).getTitle();
+            itemArray[i][2] = itemArrayList.get(i).getLocationInformation();
+            itemArray[i][3] = itemArrayList.get(i).getItemType();
+            itemArray[i][4] = itemArrayList.get(i).getStatus();
         }
 
+        return itemArray;
+    }
 
-
-        /*
-        Object[][] data = {
-                {"1","The Dark Night","aaa","5"},
-                {"2","The k Night","abha","2"},
-                {"3","The u Nightttt","abvdsa","65"},
-                {"5","The i Nightt","aqwera","54"},
-                {"1","The Dark Night","aaa","5"},
-                {"2","The k Night","abha","2"},
-                {"3","The u Nightttt","abvdsa","65"},
-                {"5","The i Nightt","aqwera","54"},
-                {"1","The Dark Night","aaa","5"},
-                {"2","The k Night","abha","2"},
-                {"3","The u Nightttt","abvdsa","65"},
-                {"5","The i Nightt","aqwera","54"},
-                {"1","The Dark Night","aaa","5"},
-                {"2","The k Night","abha","2"},
-                {"3","The u Nightttt","abvdsa","65"},
-                {"5","The i Nightt","aqwera","54"},
-                {"1","The Dark Night","aaa","5"},
-                {"2","The k Night","abha","2"},
-                {"3","The u Nightttt","abvdsa","65"},
-                {"5","The i Nightt","aqwera","54"},
-        };
-        */
-
-
+    public void createTable(String[][] itemArray) {
         table1.setModel(new DefaultTableModel(
-                booksArray, new String[]{"ID","Title","Location","Item Type"}
+                itemArray,
+                new String[]{"ID","Title","Location","Item Type","Status"}
         ));
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }

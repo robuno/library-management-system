@@ -33,7 +33,7 @@ public abstract class Item {
         return locationInformation;
     }
 
-    public String isStatus() {
+    public String getStatus() {
         return status;
     }
 
