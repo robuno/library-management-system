@@ -21,6 +21,8 @@ public class StudentScreen extends JFrame{
     private JButton deleteSelectedStudentButton;
     private JButton createStudentCardButton;
     private JTextField studentIDTextField;
+    static String[] labelOfTable = new String[] {"ID","First Name","Last Name","E-Mail","Address",
+            "Person Type","Student ID"};
 
 
     public StudentScreen() {
@@ -28,8 +30,6 @@ public class StudentScreen extends JFrame{
         setSize(1400,700);
         setTitle("Student List Screen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-
 
     }
 
@@ -41,13 +41,13 @@ public class StudentScreen extends JFrame{
 
         ArrayList<Student> studentClassArrayList = createStudentClassArrayList(personArrayList);
         String[][] studentArray = getStudentArray(studentClassArrayList);
-        createTable(studentArray);
+        mainPage.createTable(table1,studentArray,labelOfTable);
 
         addNewStudentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainPage itScreenForDigital = new mainPage();
-                int lastID = itScreenForDigital.getLastItemID("person.txt");
+                int lastID = itScreenForDigital.getLastItemID("person.txt",0);
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 pressAddStudentButton(modelTable,lastID);
@@ -56,7 +56,7 @@ public class StudentScreen extends JFrame{
         deleteSelectedStudentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PersonScreen prsScreen = new PersonScreen();
+                PersonEditScreen prsScreen = new PersonEditScreen();
                 ArrayList<ArrayList<String>> personArrayList = prsScreen.getPersonArrayList();
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
@@ -66,7 +66,7 @@ public class StudentScreen extends JFrame{
         createStudentCardButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PersonScreen prsScreen = new PersonScreen();
+                PersonEditScreen prsScreen = new PersonEditScreen();
                 ArrayList<ArrayList<String>> personArrayList = prsScreen.getPersonArrayList();
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
@@ -88,8 +88,8 @@ public class StudentScreen extends JFrame{
             if ( Integer.parseInt(personArrayList.get(i).get(0)) == selectedRowID) {
                 System.out.println(personArrayList.get(i).get(1)+"-"+selectedRowID);
                 stickerText = String.format(
-                        "%-25s%-35s\n%-25s%-35s\n%-21s%-35s\n%-23s%-35s\n%-23s%-35s\n"+
-                                "%-23s%-35s\n%-21s%-35s\n"
+                        "%-28s%-35s\n%-22s%-35s\n%-21s%-35s\n%-26s%-35s\n%-24s%-35s\n"+
+                        "%-22s%-35s\n%-23s%-35s\n"
                         ,
                         "ID:",personArrayList.get(i).get(0),
                         "First Name:",personArrayList.get(i).get(1),
@@ -138,12 +138,12 @@ public class StudentScreen extends JFrame{
                         newUserText += ",";
                     }
                 }
-                if((i) != personArrayList.size()) {
+                if((i+1) != personArrayList.size()) {
                     newUserText += "\n";
                 }
             }
             System.out.println(newUserText);
-            writeToTxt(newUserText,"person.txt",false);
+            mainPage.writeToTxt(newUserText,"person.txt",false);
             modelTable.removeRow(table1.getSelectedRow());
 
         } else {
@@ -163,7 +163,7 @@ public class StudentScreen extends JFrame{
                 passwordTextField.getText() +","+ studentTextField.getText()+","+
                 studentIDTextField.getText();
 
-        writeToTxt(newBookText,"person.txt",true);
+        mainPage.writeToTxt(newBookText,"person.txt",true);
 
         modelTable.addRow(new Object[] {
                 lastID+1,
@@ -227,24 +227,6 @@ public class StudentScreen extends JFrame{
         return studentArray;
     }
 
-    public void writeToTxt(String data, String file,boolean appendOrWriteAll) {
-        try {
-            //System.out.println(newBookText);
-            File f1 = new File(file);
-            FileWriter fileWritter = new FileWriter(f1.getName(),appendOrWriteAll);
-            BufferedWriter bw = new BufferedWriter(fileWritter);
-            bw.write(data);
-            bw.close();
-        } catch(IOException e2){
-            e2.printStackTrace();
-        }
-    }
 
-    public void createTable(String[][] studentArray) {
-        table1.setModel(new DefaultTableModel(
-                studentArray,
-                new String[]{"ID","First Name","Last Name","E-Mail","Address",
-                        "Person Type","Student ID"}
-        ));
-    }
+
 }

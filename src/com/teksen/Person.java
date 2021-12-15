@@ -78,4 +78,20 @@ public abstract class Person {
     public String getPersonType() {
         return personType;
     }
+
+    /*
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", mail='" + mail + '\'' +
+                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                ", personType='" + personType + '\'' +
+                '}';
+    }
+
+     */
 }

@@ -27,7 +27,7 @@ public class SearchScreen extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         String[][] searchedDigitalItemsArray = getSearchedDigitalItems(searchedTitle, digitalArray,indexOfSearched, lengthOfArray);
 
-        createTable(searchedDigitalItemsArray,labelOfTable);
+        mainPage.createTable(table1,searchedDigitalItemsArray,labelOfTable);
     }
 
     public String[][] getSearchedDigitalItems(String searchedTitle,String[][] digitalArray, int indexOfSearched, int lengthOfArray) {
@@ -83,11 +83,6 @@ public class SearchScreen extends JFrame{
         return newSearchedDigitalItemsArray;
     }
 
-    public void createTable(String[][] digitalArray,String[] labelOfTable) {
-        table1.setModel(new DefaultTableModel(
-                digitalArray,
-                labelOfTable
-        ));
-    }
+
 
 }

@@ -1,0 +1,7 @@
+1,Bulanti,PQ 2637.A82 B85 2010 c.1,ReadingBook,Not Available,Jean Paul Sartre,Can Yayinlari,TR,2010,11,239,9789755102108,Fransiz Edebiyati,20181701048,13/12/2021 03:13:17
+4,Se7en,PN 1997.F56.S63 2011,Digital,Not Available,David Fincher,Tiglon,Crime,EN,DVD,8680979011133,127,1995,2,777777777,13/12/2021 03:13:17
+7,SpinModel,ONLINE,Article,Available,Nihat Berker & E.Can Artun,Kadir Has University,Phys. Rev. E 104, 044131, 1-6 (2021),condensed matter,arXiv,10.1103/PhysRevE.104.04413,2000000000,13/12/2021 03:13:17
+5,JavaLateObjects,ONLINE,ETextBook,Available,Paul J. Deitel,Pearson,EN,2020,11,1244,9781292273730,xxxx,Computer Science,20181701048,13/12/2021 03:13:17
+8,Kozmos8,QB 44.2.S2419 2020,ReadingBook,Not Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi,20181701048,13/12/2021 03:13:17
+35,xcvxcvxcv,qwwwww,Digital,Not Available,wwrere,dssfsdfasd,rwerwer,zfdz,wrwer,4444442,11,222,34343434,13/12/2021 03:14:16
+34,tttttttttttttttttttt,qwwwww,Digital,Not Available,wwrere,dssfsdfasd,rwerwer,zfdz,wrwer,4444442,11,222,34343434,15/12/2021 22:50:53

@@ -31,15 +31,15 @@ public class DigitalScreen extends JFrame implements Sticker{
     private JButton buttonSearchDirector;
     private JPanel searchPanel;
     private ArrayList<ArrayList<String>> allItems;
+    static String[] labelOfTable = new String[] {"ID","Title","Location","Item Type","Status",
+            "Director","Company","Topic","Language","Physical Property",
+            "ISBN","Time","Year"};
 
     public DigitalScreen() {
         add(mainPanel);
         setSize(1400,700);
         setTitle("Digital Screen");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-
-
     }
 
     public DigitalScreen(ArrayList<ArrayList<String>> allItems) {
@@ -52,15 +52,14 @@ public class DigitalScreen extends JFrame implements Sticker{
 
         ArrayList<Digital> digitalArrayList = createDigitalClassArrayList(allItems);
         String[][] digitalArray = getDigitalArray(digitalArrayList);
-        createTable(digitalArray);
-
+        mainPage.createTable(table1,digitalArray,labelOfTable);
 
 
         addNewDigitalItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainPage itScreenForDigital = new mainPage();
-                int lastID = itScreenForDigital.getLastItemID("items.txt");
+                int lastID = itScreenForDigital.getLastItemID("items.txt",0);
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 pressAddDigitalButton(modelTable, lastID);
@@ -195,12 +194,19 @@ public class DigitalScreen extends JFrame implements Sticker{
 
             System.out.println("newbooktext: "+newBookText);
 
-            writeToTxt(newBookText,"items.txt",false);
+
+            mainPage.writeToTxt(newBookText,"items.txt",false);
             modelTable.removeRow(table1.getSelectedRow());
         }
     }
 
+
     public void pressAddDigitalButton(DefaultTableModel modelTable,  int lastID){
+        if( !(mainPage.isNumeric(timeTextField.getText(),mainPanel)) || !(mainPage.isNumeric(yearTextField.getText(),mainPanel)) ) {
+            return;
+        }
+
+
         String newBookText = "\n"+ ( lastID+1) +","+
                 titleTextField.getText() +","+locationTextField.getText()+","+
                 digitalTextField.getText()+","+statusTextField.getText()+","+
@@ -209,7 +215,7 @@ public class DigitalScreen extends JFrame implements Sticker{
                 physicalPropTextField.getText()+","+isbnTextField.getText()+","+
                 timeTextField.getText()+","+ yearTextField.getText();
 
-        writeToTxt(newBookText,"items.txt",true);
+        mainPage.writeToTxt(newBookText,"items.txt",true);
 
         modelTable.addRow(new Object[] {
                  lastID+1,
@@ -230,6 +236,8 @@ public class DigitalScreen extends JFrame implements Sticker{
 
 
     public ArrayList<Digital> createDigitalClassArrayList(ArrayList<ArrayList<String>> itemsArrayList) {
+
+
         ArrayList<Digital> digitalClassArray = new ArrayList<>();
         for(int i=0; i<itemsArrayList.size();i++) {
             //System.out.println("itemsarraylist: "+itemsArrayList.get(i));
@@ -308,26 +316,4 @@ public class DigitalScreen extends JFrame implements Sticker{
         return digitalArray;
     }
 
-
-    public void writeToTxt(String data, String file,boolean appendOrWriteAll) {
-        try {
-            //System.out.println(newBookText);
-            File f1 = new File(file);
-            FileWriter fileWritter = new FileWriter(f1.getName(),appendOrWriteAll);
-            BufferedWriter bw = new BufferedWriter(fileWritter);
-            bw.write(data);
-            bw.close();
-        } catch(IOException e2){
-            e2.printStackTrace();
-        }
-    }
-
-    public void createTable(String[][] digitalArray) {
-        table1.setModel(new DefaultTableModel(
-                digitalArray,
-                new String[]{"ID","Title","Location","Item Type","Status",
-                        "Director","Company","Topic","Language","Physical Property",
-                        "ISBN","Time","Year"}
-        ));
-    }
 }

@@ -53,8 +53,40 @@ public class Main {
             @Override
             public void run() {
 
-                mainPage itScreen = new mainPage();
-                itScreen.setVisible(true);
+                //mainPage itScreen = new mainPage();
+                //itScreen.setVisible(true);
+
+
+                Admin auth1 = new Admin(2,"unat","teksen","ut@com",
+                        "basak","passw","Student","44");
+
+                System.out.println(auth1);
+
+                //SingleStudentScreen singStuScreen = new SingleStudentScreen();
+                //singStuScreen.setVisible(true);
+
+                /*
+                int x=241;
+                Integer y = x;
+                System.out.println(y.getClass().getSimpleName());
+
+                 */
+
+                /*
+                System.out.println(isNumeric("5.05"));
+                System.out.println(isNumeric("5"));
+                System.out.println(isNumeric("-5.05"));
+                System.out.println(isNumeric("-5"));
+                System.out.println(isNumeric("-5.0456415"));
+                System.out.println(isNumeric("5.045644515"));
+                System.out.println(isNumeric("asd"));
+                System.out.println(isNumeric("true"));
+
+                 */
+
+                loginPage newLoginPage = new loginPage();
+                newLoginPage.setVisible(true);
+
 
 
                 //ReadingBookScreen rBScreen = new ReadingBookScreen();
@@ -79,5 +111,18 @@ public class Main {
 
 
 
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            System.out.println("NUMBER FORMAT EXCEPTION IS CAUGHT");
+            return false;
+        }
+        return true;
     }
 }

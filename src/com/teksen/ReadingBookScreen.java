@@ -32,6 +32,9 @@ public class ReadingBookScreen extends JFrame {
     private JTextField searchAuthorTextField;
     private JButton buttonSearchAuthor;
     private ArrayList<ArrayList<String>> allItems;
+    static String[] labelOfTable = new String[] {"ID","Title","Location","Item Type","Status",
+            "Author","Publisher","Language","Year","Edition",
+            "Page Number","ISBN","Field"};
 
     public ReadingBookScreen() {
         add(mainPanel);
@@ -54,7 +57,7 @@ public class ReadingBookScreen extends JFrame {
 
         ArrayList<ReadingBook> readingBooksArrayList = createReadingBookClassArrayList(allItems);
         String[][] readingBookArray = getReadingBookArray(readingBooksArrayList);
-        createTable(readingBookArray);
+        mainPage.createTable(table1,readingBookArray,labelOfTable);
 
 
         addNewReadingBookButton.addActionListener(new ActionListener() {
@@ -62,7 +65,7 @@ public class ReadingBookScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 mainPage itScreenForDigital = new mainPage();
-                int lastID = itScreenForDigital.getLastItemID("items.txt");
+                int lastID = itScreenForDigital.getLastItemID("items.txt",0);
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 pressAddBookButton(modelTable,lastID);
@@ -174,9 +177,14 @@ public class ReadingBookScreen extends JFrame {
 
     }
 
-
-
     public void pressAddBookButton(DefaultTableModel modelTable, int lastID) {
+
+        if( !(mainPage.isNumeric(textFieldPageNo.getText(),mainPanel))
+                || !(mainPage.isNumeric(textFieldEdition.getText(),mainPanel))
+                || !(mainPage.isNumeric(textFieldYear.getText(),mainPanel)) ) {
+            return;
+        }
+
         System.out.println(lastID);
         String newBookText = "\n"+ ( lastID+1) +","+
                 textFieldTitle.getText() +","+textFieldLocation.getText()+","+
@@ -186,7 +194,7 @@ public class ReadingBookScreen extends JFrame {
                 textFieldEdition.getText()+","+textFieldPageNo.getText()+","+
                 textFieldISBN.getText()+","+ textFieldGenre.getText();
 
-        writeToTxt(newBookText,"items.txt",true);
+        mainPage.writeToTxt(newBookText,"items.txt",true);
 
         modelTable.addRow(new Object[] {
                 lastID+1,
@@ -248,7 +256,7 @@ public class ReadingBookScreen extends JFrame {
                 }
             }
 
-            writeToTxt(newBookText,"items.txt",false);
+            mainPage.writeToTxt(newBookText,"items.txt",false);
             modelTable.removeRow(table1.getSelectedRow());
 
                     /*
@@ -288,18 +296,7 @@ public class ReadingBookScreen extends JFrame {
         return mainPanel;
     }
 
-    public void writeToTxt(String data, String file,boolean appendOrWriteAll) {
-        try {
-            //System.out.println(newBookText);
-            File f1 = new File(file);
-            FileWriter fileWritter = new FileWriter(f1.getName(),appendOrWriteAll);
-            BufferedWriter bw = new BufferedWriter(fileWritter);
-            bw.write(data);
-            bw.close();
-        } catch(IOException e2){
-            e2.printStackTrace();
-        }
-    }
+
 
     public ArrayList<ArrayList<String>> getReadingBookArrayList(ArrayList<ArrayList<String>> items) {
         ArrayList<ArrayList<String>> books = new ArrayList<>();
@@ -375,14 +372,6 @@ public class ReadingBookScreen extends JFrame {
         return readingBookArray;
     }
 
-    public void createTable(String[][] readingBooksArray) {
-        table1.setModel(new DefaultTableModel(
-                readingBooksArray,
-                new String[]{"ID","Title","Location","Item Type","Status",
-                        "Author","Publisher","Language","Year","Edition",
-                        "Page Number","ISBN","Field"}
-        ));
-    }
 
 
 

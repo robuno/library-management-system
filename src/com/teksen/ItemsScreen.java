@@ -16,6 +16,7 @@ public class ItemsScreen extends JFrame{
     private ArrayList<Digital> digitalArrayList;
     private ArrayList<ReadingBook> readingBookArrayList;
     private ArrayList<Item> itemArrayList;
+    static String[] labelOfTable = new String[] {"ID","Title","Location","Item Type","Status"};
 
     public ItemsScreen() {
         add(mainPanel);
@@ -25,7 +26,10 @@ public class ItemsScreen extends JFrame{
 
     }
 
-    public ItemsScreen(ArrayList<Digital> digitalArrayList,ArrayList<ReadingBook> readingBookArrayList) {
+    public ItemsScreen(ArrayList<Digital> digitalArrayList,ArrayList<ReadingBook> readingBookArrayList,
+                       ArrayList<EJournal> eJournalArrayList, ArrayList<EReadingBook> eReadingBookArrayList,
+                       ArrayList<ETextBook> eTextBookArrayList, ArrayList<Article> articleArrayList,
+                       ArrayList<TextBook> textBookArrayList) {
         add(mainPanel);
         setSize(1400,700);
         setTitle("Items Screen");
@@ -34,9 +38,12 @@ public class ItemsScreen extends JFrame{
         this.digitalArrayList = digitalArrayList;
         this.readingBookArrayList = readingBookArrayList;
 
-        itemArrayList = createItemArrayList(digitalArrayList,readingBookArrayList);
+        itemArrayList = createItemArrayList(digitalArrayList,readingBookArrayList,
+                eJournalArrayList,eReadingBookArrayList,
+                eTextBookArrayList,articleArrayList,
+                textBookArrayList);
         String[][] itemArray = getItemArray(itemArrayList);
-        createTable(itemArray);
+        mainPage.createTable(table1,itemArray,labelOfTable);
 
         String[] labelOfTable = new String[] {"ID","Title","Location","Item Type","Status"};
 
@@ -50,12 +57,19 @@ public class ItemsScreen extends JFrame{
         });
     }
 
-    private ArrayList<Item> createItemArrayList(ArrayList<Digital> digitalArrayList,
-                                                ArrayList<ReadingBook> readingBookArrayList) {
+    private ArrayList<Item> createItemArrayList(ArrayList<Digital> digitalArrayList,ArrayList<ReadingBook> readingBookArrayList,
+                                                ArrayList<EJournal> eJournalArrayList, ArrayList<EReadingBook> eReadingBookArrayList,
+                                                ArrayList<ETextBook> eTextBookArrayList, ArrayList<Article> articleArrayList,
+                                                ArrayList<TextBook> textBookArrayList) {
         ArrayList<Item> itemArrayList = new ArrayList<>();
 
         itemArrayList.addAll(readingBookArrayList);
         itemArrayList.addAll(digitalArrayList);
+        itemArrayList.addAll(eJournalArrayList);
+        itemArrayList.addAll(eReadingBookArrayList);
+        itemArrayList.addAll(eTextBookArrayList);
+        itemArrayList.addAll(articleArrayList);
+        itemArrayList.addAll(textBookArrayList);
 
         System.out.println("***");
         for(int i=0; i<itemArrayList.size();i++) {
@@ -78,10 +92,5 @@ public class ItemsScreen extends JFrame{
         return itemArray;
     }
 
-    public void createTable(String[][] itemArray) {
-        table1.setModel(new DefaultTableModel(
-                itemArray,
-                new String[]{"ID","Title","Location","Item Type","Status"}
-        ));
-    }
+
 }

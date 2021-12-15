@@ -32,6 +32,10 @@ public class ReturnItemScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String searchedItemID = itemIDTextField.getText();
 
+                if( !(mainPage.isNumeric(searchedItemID,mainPanel)) ) {
+                    return;
+                }
+
                 ArrayList<ArrayList<String>> issueArrayList = getIssueArrayList();
                 ArrayList<ArrayList<String>> newReturn = new ArrayList<>();
 
@@ -48,7 +52,10 @@ public class ReturnItemScreen extends JFrame {
                 }
 
                 if(availableFlag==1) {
-                    System.out.println("Item is not issued! You cannot return! Please check the library!");
+                    JOptionPane.showMessageDialog(mainPanel,
+                            "Item is not issued! You cannot return! Please check the library!",
+                            "Issue-Return Message",
+                            JOptionPane.INFORMATION_MESSAGE);
                 } else{
                     System.out.println("item issued lets return");
                     System.out.println("row: "+rowWillBeSelected);
@@ -69,7 +76,7 @@ public class ReturnItemScreen extends JFrame {
                         newIssueText += "\n";
                     }
 
-                    writeToTxt(newIssueText,"issue.txt",false);
+                    mainPage.writeToTxt(newIssueText,"issue.txt",false);
 
                     int rowItemWillBeDeleted=0;
                     for(int j=0; j < allItems.size(); j++) {
@@ -96,7 +103,7 @@ public class ReturnItemScreen extends JFrame {
                         }
                     }
 
-                    writeToTxt(newItemText,"items.txt",false);
+                    mainPage.writeToTxt(newItemText,"items.txt",false);
 
                 }
 
@@ -132,16 +139,5 @@ public class ReturnItemScreen extends JFrame {
         return issueArrayList;
     }
 
-    public void writeToTxt(String data, String file,boolean appendOrWriteAll) {
-        try {
-            //System.out.println(newBookText);
-            File f1 = new File(file);
-            FileWriter fileWritter = new FileWriter(f1.getName(),appendOrWriteAll);
-            BufferedWriter bw = new BufferedWriter(fileWritter);
-            bw.write(data);
-            bw.close();
-        } catch(IOException e2){
-            e2.printStackTrace();
-        }
-    }
+
 }
