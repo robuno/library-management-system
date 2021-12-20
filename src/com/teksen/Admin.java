@@ -1,17 +1,15 @@
 package com.teksen;
 
 public class Admin extends AuthorizedPerson {
-    static boolean advancedOptions = true;
+    private boolean advancedOptions;
 
     public Admin(int id, String firstName, String lastName, String mail,
                  String address, String password, String personType,
-                 String staffID) {
+                 String staffID, boolean advancedOptions) {
         super(id, firstName, lastName, mail, address, password, personType, staffID);
+        this.advancedOptions = advancedOptions;
     }
 
-    public boolean isAdvancedOptions() {
-        return advancedOptions;
-    }
 
     /*
     @Override

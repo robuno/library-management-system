@@ -57,11 +57,6 @@ public class Main {
                 //itScreen.setVisible(true);
 
 
-                Admin auth1 = new Admin(2,"unat","teksen","ut@com",
-                        "basak","passw","Student","44");
-
-                System.out.println(auth1);
-
                 //SingleStudentScreen singStuScreen = new SingleStudentScreen();
                 //singStuScreen.setVisible(true);
 

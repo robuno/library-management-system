@@ -65,12 +65,11 @@ public class mainPage extends JFrame{
     }
 
     public void allButtonActions() {
-        PersonEditScreen prsScreen = new PersonEditScreen();
-        ArrayList<ArrayList<String>> personArrayList = prsScreen.getPersonArrayList();
-        loginPage newLoginPage = new loginPage();
+        loginPage lgPage = new loginPage();
+        ArrayList<ArrayList<String>> personArrayList = lgPage.getPersonArrayList();
         String email = geteMail();
         //System.out.println("mail parameter: "+ email);
-        boolean permissionAdmin = newLoginPage.getPermission(email, personArrayList);
+        boolean permissionAdmin = lgPage.getPermission(email, personArrayList);
         //createTable(readingBookArray);
         manageDigital.addActionListener(new ActionListener() {
             @Override
@@ -137,8 +136,8 @@ public class mainPage extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(permissionAdmin) {
-                    PersonEditScreen prsScreen = new PersonEditScreen();
-                    ArrayList<ArrayList<String>> personArrayList = prsScreen.getPersonArrayList();
+                    loginPage lgPage = new loginPage();
+                    ArrayList<ArrayList<String>> personArrayList = lgPage.getPersonArrayList();
                     StudentScreen stuScreen = new StudentScreen(personArrayList);
                     stuScreen.setVisible(true);
                 } else {
@@ -154,8 +153,8 @@ public class mainPage extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<ArrayList<String>> allItems = getItemsArrayList();
-                PersonEditScreen prsScreen = new PersonEditScreen();
-                ArrayList<ArrayList<String>> personArrayList = prsScreen.getPersonArrayList();
+                loginPage lgPage = new loginPage();
+                ArrayList<ArrayList<String>> personArrayList = lgPage.getPersonArrayList();
 
                 IssueAnItemScreen isuScreen = new IssueAnItemScreen(personArrayList,allItems);
                 isuScreen.setVisible(true);
@@ -344,7 +343,5 @@ public class mainPage extends JFrame{
                 labelOfTable
         ));
     }
-
-
 
 }

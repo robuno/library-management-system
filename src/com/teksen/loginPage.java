@@ -17,20 +17,10 @@ public class loginPage extends JFrame {
     private JButton loginButtonStudent;
     private JButton loginButtonStaff;
     private JTextField textField2;
-    private JRadioButton administratorRadioButton;
-    private JRadioButton authorizedStaffRadioButton;
     private JPanel panel1;
     private JLabel logoLabel;
-    private JLabel forgotPassField1;
-    private JLabel staffLabel;
-    private JLabel studentLabel;
-    private JLabel emailLabel;
-    private JLabel password1Label;
-    private JLabel studentNumberLabel;
-    private JLabel password2Label;
     private JCheckBox showPasswordCheckBox;
     private JCheckBox showPasswordCheckBox2;
-    private JTable table1;
 
     static String eMail;
 
@@ -42,19 +32,14 @@ public class loginPage extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         eMail = textFieldEmail.getText();
 
-        ArrayList<ArrayList<String>> staffs = getPersonList();
+        ArrayList<ArrayList<String>> staffs = getPersonArrayList();
         boolean permission = getPermission(eMail,staffs);
 
-        ImageIcon khasLogo = new ImageIcon("loginPage2\\khasLogo.png");
+        ImageIcon khasLogo = new ImageIcon("khaslogo.png");
         Image khasLogoScale = khasLogo.getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH);
         ImageIcon scaledKhasLogo = new ImageIcon(khasLogoScale);
         logoLabel.setIcon(scaledKhasLogo);
 
-        textFieldEmail.setPreferredSize(new Dimension(50, 25));
-        passwordField1.setPreferredSize(new Dimension(50, 25));
-
-        textField2.setPreferredSize(new Dimension(50, 25));
-        passwordField2.setPreferredSize(new Dimension(50, 25));
 
         //loginButtonStaff.setFont(new java.awt.Font("Arial",0, 16));
         loginButtonStaff.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -98,8 +83,9 @@ public class loginPage extends JFrame {
             }
         });
     }
-    public ArrayList<ArrayList<String>> getPersonList() {
-        ArrayList<ArrayList<String>> staffs = new ArrayList<>();
+
+    public ArrayList<ArrayList<String>> getPersonArrayList() {
+        ArrayList<ArrayList<String>> personArrayList = new ArrayList<>();
         try {
             File myObj = new File("person.txt");
             Scanner myReader = new Scanner(myObj);
@@ -118,19 +104,23 @@ public class loginPage extends JFrame {
                 aStaff.add(singleStaff[5]);
                 aStaff.add(singleStaff[6]);
                 aStaff.add(singleStaff[7]);
+                if(!singleStaff[6].equals("Student")) {
+                    aStaff.add(singleStaff[8]);
+                }
 
-                staffs.add(aStaff);
+                personArrayList.add(aStaff);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        return staffs;
+        System.out.println("**Personarraylist: "+personArrayList);
+        return personArrayList;
     }
 
     private void StaffLogin() {
-        ArrayList<ArrayList<String>> staffs = getPersonList();
+        ArrayList<ArrayList<String>> staffs = getPersonArrayList();
 
         String email, password;
         email = textFieldEmail.getText();
@@ -158,11 +148,10 @@ public class loginPage extends JFrame {
         }
     }
     private void StudentLogin() {
-        ArrayList<ArrayList<String>> students = getPersonList();
+        ArrayList<ArrayList<String>> students = getPersonArrayList();
 
         String studentNumber, password;
         studentNumber = textField2.getText();
-
         password = passwordField2.getText();
         System.out.println(studentNumber + " " + password);
 
@@ -189,19 +178,17 @@ public class loginPage extends JFrame {
     public boolean getPermission(String email, ArrayList<ArrayList<String>> personArrayList) {
         boolean permissionAdmin=false;
         for(int i=0; i<personArrayList.size();i++) {
-            System.out.println(i+": "+personArrayList.get(i).get(3)+"--"+email);
-            System.out.println(i+": "+personArrayList.get(i).get(6)+"--"+"Admin");
-            if(personArrayList.get(i).get(3).equals(email)) {
-
-                if(personArrayList.get(i).get(6).equals("Admin")) {
-
-                    permissionAdmin = true;
-                    break;
+            if (!personArrayList.get(i).get(6).equals("Student")) {
+                System.out.println(i+": "+personArrayList.get(i).get(3)+"--"+email);
+                System.out.println(i+": "+personArrayList.get(i).get(8)+"--"+"true");
+                if(personArrayList.get(i).get(3).equals(email)) {
+                    if(personArrayList.get(i).get(8).equals("true")) {
+                        permissionAdmin = true;
+                        break;
+                    }
                 }
-
             }
         }
-
         return permissionAdmin;
     }
 

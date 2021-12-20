@@ -56,8 +56,8 @@ public class StudentScreen extends JFrame{
         deleteSelectedStudentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PersonEditScreen prsScreen = new PersonEditScreen();
-                ArrayList<ArrayList<String>> personArrayList = prsScreen.getPersonArrayList();
+                loginPage lgPage = new loginPage();
+                ArrayList<ArrayList<String>> personArrayList = lgPage.getPersonArrayList();
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 pressDeleteBookButton(modelTable, personArrayList);
@@ -66,8 +66,8 @@ public class StudentScreen extends JFrame{
         createStudentCardButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PersonEditScreen prsScreen = new PersonEditScreen();
-                ArrayList<ArrayList<String>> personArrayList = prsScreen.getPersonArrayList();
+                loginPage lgPage = new loginPage();
+                ArrayList<ArrayList<String>> personArrayList = lgPage.getPersonArrayList();
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 String stickerText = createSticker(modelTable,personArrayList);
@@ -157,6 +157,9 @@ public class StudentScreen extends JFrame{
 
     public void pressAddStudentButton(DefaultTableModel modelTable, int lastID) {
         //System.out.println(lastID);
+        if( !(mainPage.isNumeric(studentIDTextField.getText(),mainPanel)) ) {
+            return;
+        }
         String newBookText = "\n"+ ( lastID+1) +","+
                 firstNameTextField.getText() +","+lastNameTextField.getText()+","+
                 mailTextField.getText()+","+addressTextField.getText()+","+
@@ -186,9 +189,9 @@ public class StudentScreen extends JFrame{
                 //System.out.println("itemsarraylist: "+personArrayList.get(i));
                 Student aStudent = new Student(
                         Integer.parseInt(personArrayList.get(i).get(0)), // int id
-                        personArrayList.get(i).get(3), // String firstName
-                        personArrayList.get(i).get(1), // String lastName
-                        personArrayList.get(i).get(2), // String mail
+                        personArrayList.get(i).get(1), // String firstName
+                        personArrayList.get(i).get(2), // String lastName
+                        personArrayList.get(i).get(3), // String mail
                         personArrayList.get(i).get(4), // String address
                         personArrayList.get(i).get(5), // String password
                         personArrayList.get(i).get(6), // String personType

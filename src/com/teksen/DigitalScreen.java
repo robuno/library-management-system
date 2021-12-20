@@ -206,7 +206,6 @@ public class DigitalScreen extends JFrame implements Sticker{
             return;
         }
 
-
         String newBookText = "\n"+ ( lastID+1) +","+
                 titleTextField.getText() +","+locationTextField.getText()+","+
                 digitalTextField.getText()+","+statusTextField.getText()+","+
