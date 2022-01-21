@@ -1,7 +1,0 @@
-0,Bulanti,PQ 2637.A82 B85 2010 c.1,ReadingBook
-1,Computer Networking,TK 5105.875.I57 K87 2013 c.1,TextBook
-2,Kozmos,QB 44.2.S2419 2020,ReadingBook
-3,Se7en,PN 1997.F56/S63 2011,Digital
-4,JavaLateObjects,ONLINE,ETextBook
-5,Journal of network and computer applications,ONLINE,EJournal
-6,Spin-s Spin-Glass Phases in the d=3 Ising Model,ONLINE,Article
