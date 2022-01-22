@@ -1,0 +1,6 @@
+4,Se7en,PN 1997.F56.S63 2011,Digital,Not Available,David Fincher,Tiglon,Crime,EN,DVD,8680979011133,127,1995,2,20181701048,26/12/2021 18:58:01
+8,Inception,PN 1997.A46.S61 2011,Digital,Not Available,Christopher Nolan,Warner Bros,Science Fiction,EN,DVD,8680979011317,148,2010,20181701048,26/12/2021 18:58:04
+10,Defence Science Journal,ONLINE,EJournal,Available,Defence Scientific Information & Documentation Centre,2079-3715,Military History & Science,http://publications.drdo.gov.in/ojs/index.php/dsj,true,20200104030,26/12/2021 18:58:35
+12,Introduction to programming in Python,QA 76.73.P98 S43 2015 c.3,TextBook,Not Available,Wayne Kevin & Dondero Robert,Pearson,EN,2015,8,771,9780134076430,Computer Programming,20200104030,26/12/2021 18:58:37
+18,Ermiş,PR 65.2.R5215.2004,ReadingBook,Not Available,Halil Cibran,Ithaki,TR,2004,9,65,28232491051,Hikaye,20181701057,26/12/2021 18:58:56
+3,Kozmos,QB 44.2.S2419 2020,ReadingBook,Not Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi,20181701057,26/12/2021 18:59:17

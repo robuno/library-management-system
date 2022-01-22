@@ -2,76 +2,115 @@ package com.teksen;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 import java.util.ArrayList;
-
+/**
+ * <h1> DigitalScreen Class </h1>
+ * The DigitalScreen program implements that
+ * creates an instance variable to display the frame includes
+ * panel, textfields, buttons. This class creates a functionality for
+ * form of the screen.
+ * In this screen, program has item buttons, add/delete item buttons,
+ * create sticker for selected item button and a table that lists items
+ * for Digital class.
+ *
+ * @author Unat Teksen - 20181701048
+ * @author Humeyra Dogus -20181701057
+ * Computer Engineering
+ * @version 1.0
+ * @since 24-12-2021
+ */
 public class DigitalScreen extends JFrame implements Sticker{
-    private JPanel mainPanel;
-    private JTable table1;
-    private JTextField titleTextField;
-    private JTextField locationTextField;
-    private JTextField digitalTextField;
-    private JTextField directionTextField;
-    private JTextField companyTextField;
-    private JTextField topicTextField;
-    private JTextField languageTextField;
-    private JTextField physicalPropTextField;
-    private JTextField yearTextField;
-    private JTextField timeTextField;
-    private JTextField isbnTextField;
-    private JTextField statusTextField;
-    private JButton deleteSelectedDigitalItemButton;
-    private JButton addNewDigitalItemButton;
-    private JButton createStickerForSelectedButton;
-    private JTextField searchTitleTextField;
-    private JTextField searchDirectorTextField;
-    private JButton buttonSearchTitle;
-    private JButton buttonSearchDirector;
-    private JPanel searchPanel;
+    private JPanel mainPanel; // panel instance variable
+    private JTable table1; // table instance variable
+    private JTextField titleTextField; // textfield instance variable
+    private JTextField locationTextField; // textfield instance variable
+    private JTextField digitalTextField; // textfield instance variable
+    private JTextField directionTextField; // textfield instance variable
+    private JTextField companyTextField; // textfield instance variable
+    private JTextField topicTextField; // textfield instance variable
+    private JTextField languageTextField; // textfield instance variable
+    private JTextField physicalPropTextField; // textfield instance variable
+    private JTextField yearTextField; // textfield instance variable
+    private JTextField timeTextField; // textfield instance variable
+    private JTextField isbnTextField; // textfield instance variable
+    private JTextField statusTextField; // textfield instance variable
+    private JButton deleteSelectedDigitalItemButton; // button instance variable
+    private JButton addNewDigitalItemButton; // button instance variable
+    private JButton createStickerForSelectedButton; // button instance variable
+    private JTextField searchTitleTextField; // textfield instance variable
+    private JTextField searchDirectorTextField; // textfield instance variable
+    private JButton buttonSearchTitle; // button instance variable
+    private JButton buttonSearchDirector; // button instance variable
+    private JPanel searchPanel; // panel instance variable
     private ArrayList<ArrayList<String>> allItems;
     static String[] labelOfTable = new String[] {"ID","Title","Location","Item Type","Status",
             "Director","Company","Topic","Language","Physical Property",
-            "ISBN","Time","Year"};
+            "ISBN","Time","Year"};// labels for table
 
-    public DigitalScreen() {
-        add(mainPanel);
-        setSize(1400,700);
-        setTitle("Digital Screen");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }
 
+    /**
+     * DigitalScreen Constructor
+     * This constructor adds the components of form to the frame and has
+     * listener for buttons. Each listener has its own variable declaration anda
+     * assigning and also call to a function for related operation.
+     *
+     * This constructor has listeners for "add, delete, create sticker" for item and search item buttons.
+     * @param allItems is the all items in database
+     */
     public DigitalScreen(ArrayList<ArrayList<String>> allItems) {
-        add(mainPanel);
-        setSize(1400,700);
-        setTitle("Digital Screen");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        add(mainPanel); // add panel to the frame
+        setSize(1400,700); // set initial size
+        setTitle("Digital Screen"); // set title for frame
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // enable to close window from x in the top right corner
 
-        this.allItems = allItems;
+        this.allItems = allItems; // assign allItems
 
-        ArrayList<Digital> digitalArrayList = createDigitalClassArrayList(allItems);
-        String[][] digitalArray = getDigitalArray(digitalArrayList);
-        mainPage.createTable(table1,digitalArray,labelOfTable);
+        ArrayList<Digital> digitalArrayList = createDigitalClassArrayList(allItems); // create Digital ArrayList
+        String[][] digitalArray = getDigitalArray(digitalArrayList); // create Digital Array
+        MainPage.createTable(table1,digitalArray,labelOfTable); // create table
+
+        ImageIcon searchDirectorIcon = new ImageIcon("search.png"); // upload search icon
+        Image searchDirectorIconScale = searchDirectorIcon.getImage().getScaledInstance(14, 13, Image.SCALE_SMOOTH);
+        ImageIcon scaledSearchDirectorIconScale= new ImageIcon(searchDirectorIconScale);// create icon
+        buttonSearchDirector.setIcon(scaledSearchDirectorIconScale); // display search icon
+        buttonSearchTitle.setIcon(scaledSearchDirectorIconScale);// display search icon
 
 
         addNewDigitalItemButton.addActionListener(new ActionListener() {
+            /**
+             * Add New Digital Button
+             * When the add new digital button is pressed, get the last item's ID
+             * to increment it for new item's ID. Create Table Model to update the table
+             * after adding new item.
+             *
+             * Call pressAddDigitalButton function to perform adding operation
+             * @param e is the pressing event.
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPage itScreenForDigital = new mainPage();
+                MainPage itScreenForDigital = new MainPage();
                 int lastID = itScreenForDigital.getLastItemID("items.txt",0);
-
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 pressAddDigitalButton(modelTable, lastID);
-
-
             }
         });
 
         deleteSelectedDigitalItemButton.addActionListener(new ActionListener() {
+            /**
+             * Delete Selected Digital Button
+             * When the delete selected digital button is pressed, get the all items in the array
+             * to determine which object is going to be deleted in database and create table model
+             * to update list.
+             *
+             * Call pressDeleteDigitalButton function to perform removing operation
+             * @param e is the pressing event.
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPage itScreenForDigital = new mainPage();
+                MainPage itScreenForDigital = new MainPage();
                 ArrayList<ArrayList<String>> allItems = itScreenForDigital.getItemsArrayList();
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
@@ -81,24 +120,36 @@ public class DigitalScreen extends JFrame implements Sticker{
         });
 
         createStickerForSelectedButton.addActionListener(new ActionListener() {
+            /**
+             * Create Sticker Selected Digital Button
+             * When the create sticker for selected digital button is pressed, get the all items in the array
+             * to determine the item whose sticker will be created in database and create table model
+             * to get the selected item. Create sticker text to display sticker for selected item.
+             *
+             * @param e is the pressing event.
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPage itScreenForDigital = new mainPage();
+                MainPage itScreenForDigital = new MainPage();
                 ArrayList<ArrayList<String>> allItems = itScreenForDigital.getItemsArrayList();
                 ArrayList<Digital> digitalArrayList = createDigitalClassArrayList(allItems);
 
                 DefaultTableModel modelTable =(DefaultTableModel)table1.getModel();
                 String stickerText = createSticker(modelTable,allItems);
-                StickerScreen stckScreen = new StickerScreen(stickerText, modelTable, table1);
-                stckScreen.setVisible(true);
+                if(!stickerText.equals("")) {
+                    StickerScreen stckScreen = new StickerScreen(stickerText, modelTable, table1);
+                    stckScreen.setVisible(true);
+                }
             }
         });
 
-        String[] labelOfTable = new String[] {"ID","Title","Location","Item Type","Status",
-                "Director","Company","Topic","Language","Physical Property",
-                "ISBN","Time","Year"};
-
         buttonSearchTitle.addActionListener(new ActionListener() {
+            /**
+             * Search Title in Digital
+             * This function get text from user and searches the title in database by
+             * creating SearchScreen object
+             * @param e is the pressing event.
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 String searchedTitle = searchTitleTextField.getText();
@@ -108,6 +159,12 @@ public class DigitalScreen extends JFrame implements Sticker{
         });
 
         buttonSearchDirector.addActionListener(new ActionListener() {
+            /**
+             * Search Director in Digital
+             * This function get text from user and searches the title in database by
+             * creating SearchScreen object
+             * @param e is the pressing event.
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 String searchedDirector = searchDirectorTextField.getText();
@@ -117,69 +174,86 @@ public class DigitalScreen extends JFrame implements Sticker{
         });
     }
 
+    /**
+     * CreateSticker Function
+     * This function creates a sticker text to display the selected item's values in
+     * sticker screen. To determine the item whose sticker will be displayed, user needs to select
+     * a single row in the table and press the create sticker button.
+     * @param modelTable is the table model for articles
+     * @param allItems is the all items in database
+     * @return sticker text for selected item.
+     */
     public String createSticker( DefaultTableModel modelTable, ArrayList<ArrayList<String>> allItems) {
-        int selectedRowNo = table1.getSelectedRow();
-        //System.out.println("selectedrowid not int: "+ Integer.parseInt(String.valueOf(modelTable.getValueAt(selectedRowNo, 0))));
-        int selectedRowID = Integer.parseInt(String.valueOf(modelTable.getValueAt(selectedRowNo, 0)));
 
         String stickerText ="";
-        for(int i=0; i <allItems.size(); i++) {
-            if ( Integer.parseInt(allItems.get(i).get(0)) == selectedRowID) {
-                System.out.println(allItems.get(i).get(1)+"-"+selectedRowID);
-                stickerText = String.format(
-                        "%-25s%-35s\n%-25s%-35s\n%-21s%-35s\n%-23s%-35s\n%-23s%-35s\n"+
-                                "%-23s%-35s\n%-21s%-35s\n%-19s%-35s\n%-24s%-35s\n%-23s%-35s\n"+
-                                "%-16s%-35s\n%-23s%-35s\n%-22s%-35s"
-                        ,
-                        "ID:",allItems.get(i).get(0),
-                        "Title:",allItems.get(i).get(1),
-                        "Location:",allItems.get(i).get(2),
-                        "Type:",allItems.get(i).get(3),
-                        "Status:",allItems.get(i).get(4),
-
-                        "Director:",allItems.get(i).get(5),
-                        "Company:",allItems.get(i).get(6),
-                        "Topic:",allItems.get(i).get(7),
-                        "Language:",allItems.get(i).get(8),
-                        "Physical Property:",allItems.get(i).get(9),
-
-                        "ISBN:",allItems.get(i).get(10),
-                        "Time:",allItems.get(i).get(11),
-                        "Year:",allItems.get(i).get(12)
-                );
-            }
-        }
-        //System.out.println(stickerText);
-        return stickerText;
-
-    }
-
-    public void pressDeleteDigitalButton( DefaultTableModel modelTable, ArrayList<ArrayList<String>> itemsArrayList) {
-        System.out.println(itemsArrayList);
-        System.out.println("********");
-
         if(table1.getSelectedRowCount() ==1) {
+
             int selectedRowNo = table1.getSelectedRow();
-            System.out.println("selectedrowid not int: "+ Integer.parseInt(String.valueOf(modelTable.getValueAt(selectedRowNo, 0))));
+            //System.out.println("selectedrowid not int: "+ Integer.parseInt(String.valueOf(modelTable.getValueAt(selectedRowNo, 0))));
             int selectedRowID = Integer.parseInt(String.valueOf(modelTable.getValueAt(selectedRowNo, 0)));
 
+            for(int i=0; i <allItems.size(); i++) {
+                if ( Integer.parseInt(allItems.get(i).get(0)) == selectedRowID) {
+                    //System.out.println(allItems.get(i).get(1)+"-"+selectedRowID);
+                    stickerText = String.format(
+                            "%-29s%-35s\n%-29s%-35s\n%-25s%-35s\n%-27s%-35s\n%-26s%-35s\n"+
+                                    "%-26s%-35s\n%-22s%-35s\n%-27s%-35s\n%-23s%-35s\n%-20s%-35s\n"+
+                                    "%-26s%-35s\n%-26s%-35s\n%-26s%-35s"
+                            ,
+                            "ID:",allItems.get(i).get(0),
+                            "Title:",allItems.get(i).get(1),
+                            "Location:",allItems.get(i).get(2),
+                            "Type:",allItems.get(i).get(3),
+                            "Status:",allItems.get(i).get(4),
+
+                            "Director:",allItems.get(i).get(5),
+                            "Company:",allItems.get(i).get(6),
+                            "Topic:",allItems.get(i).get(7),
+                            "Language:",allItems.get(i).get(8),
+                            "Physical Property:",allItems.get(i).get(9),
+
+                            "ISBN:",allItems.get(i).get(10),
+                            "Time:",allItems.get(i).get(11),
+                            "Year:",allItems.get(i).get(12)
+                    );
+                }
+            }
+            //System.out.println(stickerText);
+            return stickerText;
+        } else {
+            if(table1.getRowCount() == 0 ) {
+                JOptionPane.showMessageDialog(table1,"Table is empty.");
+            } else {
+                JOptionPane.showMessageDialog(table1,"Please select single row to create sticker.");
+            }
+            return"";
+        }
+    }
+
+    /**
+     * Delete Digital Function
+     * This function removes the selected item from database. To determine the which item will be removed,
+     * user needs to select the single item from the table.
+     * @param modelTable is the table model for articles
+     * @param itemsArrayList is the all items in database
+     * @return nothing.
+     */
+    public void pressDeleteDigitalButton( DefaultTableModel modelTable, ArrayList<ArrayList<String>> itemsArrayList) {
+        if(table1.getSelectedRowCount() ==1) {
+            int selectedRowNo = table1.getSelectedRow();
+            int selectedRowID = Integer.parseInt(String.valueOf(modelTable.getValueAt(selectedRowNo, 0)));
             int rowWillBeDeleted=0;
             for(int i=0; i<itemsArrayList.size(); i++) {
                 for(int j = 0; j< itemsArrayList.get(0).size(); j++) {
                     if( Integer.parseInt(itemsArrayList.get(i).get(0)) ==selectedRowID) {
-                        System.out.print(itemsArrayList.get(i).get(j)+",");
+                        //System.out.print(itemsArrayList.get(i).get(j)+",");
                         rowWillBeDeleted =i;
                     }
                 }
             }
-
-            System.out.println("rowwillbedeleted"+rowWillBeDeleted);
             itemsArrayList.remove(rowWillBeDeleted);
-
             String newBookText = "";
 
-            System.out.println(itemsArrayList);
-            System.out.println("********");
             for(int i=0; i< itemsArrayList.size(); i++) {
                 for(int j=0; j<itemsArrayList.get(i).size();j++) {
                     newBookText += itemsArrayList.get(i).get(j);
@@ -192,17 +266,27 @@ public class DigitalScreen extends JFrame implements Sticker{
                 }
             }
 
-            System.out.println("newbooktext: "+newBookText);
-
-
-            mainPage.writeToTxt(newBookText,"items.txt",false);
+            MainPage.writeToTxt(newBookText,"items.txt",false);
             modelTable.removeRow(table1.getSelectedRow());
+        } else {
+            if(table1.getRowCount() == 0 ) {
+                JOptionPane.showMessageDialog(table1,"Table is empty.");
+            } else {
+                JOptionPane.showMessageDialog(table1,"Please select single row to delete.");
+            }
         }
     }
 
-
+    /**
+     * Add Digital Function
+     * This function add new digital by getting new item's values from user
+     * to database and the table.
+     * @param modelTable is the table model.
+     * @param lastID is the last id of the item in database
+     * @return nothing.
+     */
     public void pressAddDigitalButton(DefaultTableModel modelTable,  int lastID){
-        if( !(mainPage.isNumeric(timeTextField.getText(),mainPanel)) || !(mainPage.isNumeric(yearTextField.getText(),mainPanel)) ) {
+        if( !(MainPage.isNumeric(timeTextField.getText(),mainPanel)) || !(MainPage.isNumeric(yearTextField.getText(),mainPanel)) ) {
             return;
         }
 
@@ -214,7 +298,7 @@ public class DigitalScreen extends JFrame implements Sticker{
                 physicalPropTextField.getText()+","+isbnTextField.getText()+","+
                 timeTextField.getText()+","+ yearTextField.getText();
 
-        mainPage.writeToTxt(newBookText,"items.txt",true);
+        MainPage.writeToTxt(newBookText,"items.txt",true);
 
         modelTable.addRow(new Object[] {
                  lastID+1,
@@ -234,9 +318,14 @@ public class DigitalScreen extends JFrame implements Sticker{
     }
 
 
+    /**
+     * Create Digital Array List Function
+     * This function creates Digital Array List by filtering from all items in the
+     * database. This arraylist will be used to show selected items in the table.
+     * @param itemsArrayList is the all items in database
+     * @return Digital ArrayList.
+     */
     public ArrayList<Digital> createDigitalClassArrayList(ArrayList<ArrayList<String>> itemsArrayList) {
-
-
         ArrayList<Digital> digitalClassArray = new ArrayList<>();
         for(int i=0; i<itemsArrayList.size();i++) {
             //System.out.println("itemsarraylist: "+itemsArrayList.get(i));
@@ -261,28 +350,14 @@ public class DigitalScreen extends JFrame implements Sticker{
                 //System.out.println(aNewDigital.getDirector());
             }
         }
-
-        /*
-        for(int i=0; i < digitalClassArray.size(); i++) {
-            System.out.println(digitalClassArray.get(i).getId()+","+
-                    digitalClassArray.get(i).getTitle()+","+
-                    digitalClassArray.get(i).getLocationInformation()+","+
-                    digitalClassArray.get(i).getItemType()+","+
-                    digitalClassArray.get(i).getStatus()+","+
-                    digitalClassArray.get(i).getDirector()+","+
-                    digitalClassArray.get(i).getCompany()+","+
-                    digitalClassArray.get(i).getTopic()+","+
-                    digitalClassArray.get(i).getLanguage()+","+
-                    digitalClassArray.get(i).getPhysicalProperty()+","+
-                    digitalClassArray.get(i).getISBN()+","+
-                    digitalClassArray.get(i).getTime()+","+
-                    digitalClassArray.get(i).getYear());
-        }
-
-         */
         return digitalClassArray;
     }
-
+    /**
+     * Get Digital Array Function
+     * This function crates Article array to display items in table
+     * @param digitalArrayList is the ArrayList contains only Digitals
+     * @return Digital nested array.
+     */
     public String[][] getDigitalArray(ArrayList<Digital> digitalArrayList) {
         String[][] digitalArray = new String[digitalArrayList.size()][13];
         for(int i=0; i < digitalArrayList.size();i++) {
@@ -300,19 +375,6 @@ public class DigitalScreen extends JFrame implements Sticker{
             digitalArray[i][11] = String.valueOf(digitalArrayList.get(i).getTime());
             digitalArray[i][12] = String.valueOf(digitalArrayList.get(i).getYear());
         }
-
-        /*
-        for(int i=0; i < digitalArray.length; i++) {
-            for(int j=0; j < digitalArray[i].length; j++) {
-                System.out.print(digitalArray[i][j]+",");
-            }
-            System.out.println();
-        }
-
-         */
-
-
         return digitalArray;
     }
-
 }

@@ -1,63 +1,24 @@
-1,Bulanti,PQ 2637.A82 B85 2010 c.1,ReadingBook,Not Available,Jean Paul Sartre,Can Yayinlari,TR,2010,11,239,9789755102108,Fransiz Edebiyati
+1,Bulanti,PQ 2637.A82 B85 2010 c.1,ReadingBook,Available,Jean Paul Sartre,Can Yayinlari,TR,2010,11,239,9789755102108,Fransiz Edebiyati
 2,Computer Networking,TK 5105.875.I57 K87 2013 c.1,TextBook,Available,James Kurose,Pearson,EN,2013,6,888,0273768964,Computer Science
-3,Kozmos,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
+3,Kozmos,QB 44.2.S2419 2020,ReadingBook,Not Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
 4,Se7en,PN 1997.F56.S63 2011,Digital,Not Available,David Fincher,Tiglon,Crime,EN,DVD,8680979011133,127,1995,2
-5,JavaLateObjects,ONLINE,ETextBook,Available,Paul J. Deitel,Pearson,EN,2020,11,1244,9781292273730,xxxx,Computer Science
+5,Java Late Objects,ONLINE,ETextBook,Available,Paul J. Deitel,Pearson,EN,2020,11,1244,9781292273730,http://www.academicus.edu.al/,Computer Science
 6,Journal of network and computer applications,ONLINE,EJournal,Available,Elsevier,1084-8045,Computer Networks,https://www.journals.elsevier.com/journal-of-network-and-computer-applications,true
 7,SpinModel,ONLINE,Article,Available,Nihat Berker & E.Can Artun,Kadir Has University,Phys. Rev. E 104 044131 1-6 (2021),condensed matter,arXiv,10.1103/PhysRevE.104.04413
-8,Kozmos8,QB 44.2.S2419 2020,ReadingBook,Not Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-9,Kozmos9,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-10,Kozmos10,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-11,Kozmos11,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-12,Kozmos12,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-13,Kozmos13,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-14,Kozmos14,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-15,Kozmos15,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-16,Kozmos16,QB 44.2.S2419 2020,ReadingBook,Available,Carl Sagan,Altin Kitaplar,TR,2020,24,367,9789752107830,Astronomi
-17,title2,loc2,ReadingBook,Available,Jean Paul Sartre,pub2,lang2,888,44,333,5555555555,gerne2
-19,ondokuzuncukitap,ONYEDI 17,ReadingBook,Available,author17,publisher17,OY,1998,33,300,444444444,Roman
-20,yirmincikitap,ONYEDI 17,ReadingBook,Available,author17,publisher17,OY,1998,33,300,444444444,Roman
-21,yirmincikitap1,ONYEDI 17,ReadingBook,Available,author17,publisher17,OY,1998,33,300,444444444,Roman
-23,yirmincikitap3,ONYEDI 17,ReadingBook,Available,author17,publisher17,OY,1998,33,300,444444444,Roman
-24,yirmincikitap4,ONYEDI 17,ReadingBook,Available,author17,publisher17,OY,1998,33,300,444444444,Roman
-25,TITLEEEE,LOCATI,ReadingBook,Available,AUTHORRRRRR,PUBLISHERRRRR,LANGGGGGGGGGG,2021,35,400,5555555555555,Romanci
-26,BASLİK,KONUM,ReadingBook,Available,YAZAR,YAYİNCİ,DİL,1945,38,500,66666666,Romancik
-27,Inception,PN 1997.F56.S63 2011,Digital,Available,Christopher Nolan,Warner Bros,Science Fiction,EN,DVD,8680979011317,148,2010
-28,TTT,RRR,Digital,Available,DD,ERSER,TT,SERSE,TERE,1111111,122,2222
-29,TTTASDFASDF,RRR,Digital,Available,DD,ERSER,TT,SERSE,TERE,1111111,122,2222
-30,uıouıou,uuuuuuuuuuu,Digital,Available,yyyyyyy,üjjjjjjj,tttttttttt,üüüüüü,gggggg,55555555,444,2222
-31,The fog,PN 1995.9.H6 S57 2005 c.1,Digital,Available,John Carpenter,AVCO Embassy Pictures,Horror,EN,DVD,8693040407209,90,1980
-32,This is England,PN 1995.9.S87 T457 2007 c.1,Digital,Available,Mark Herbert,EM Media,Drama,EN,DVD,5055201801890,98,2006
-34,tttttttttttttttttttt,qwwwww,Digital,Not Available,wwrere,dssfsdfasd,rwerwer,zfdz,wrwer,4444442,11,222
-35,xcvxcvxcv,qwwwww,Digital,Not Available,wwrere,dssfsdfasd,rwerwer,zfdz,wrwer,4444442,11,222
-36,Defence Science Journal,ONLINE,EJournal,Available,Defence Scientific Information & Documentation Centre,2079-3715,Military History & Science,http://publications.drdo.gov.in/ojs/index.php/dsj,true
-37,gol,ww,Digital,Available,qqq,zzzzzzz,eeee,zzzzzz,etetetet,123,555,125
-38,Gol,yyyyyyyttttttttt,Digital,Available,rrrrrrrrrrrr,yyyyy,wwwwwwwwwww,yy,qqqqqq,1212,222,3333
-39,gol,yyyyyyyttttttttt,Digital,Available,rrrrrrrrrrrr,yyyyy,wwwwwwwwwww,yy,qqqqqq,1212,222,3333
-40,qqqqqqqqqqqqqq,adsfa,Digital,Available,sdfasd,fasdfasdfasd,fasfdasd,sfsadfasd,adsf,21123123,1412,12312
-41,zxcvzcxv,adsfa,Digital,Available,sdfasd,fasdfasdfasd,fasfdasd,sfsadfasd,adsf,21123123,1412,12312
-43,rrrrrrrrrrrreeeeeeeee,şşşş,Digital,Available,şşşşş,şşşşşşş,şş,şş,şşş,33333,111,11111
-46,Probability and statistics for engineers and scientists,ONLINE,ETextBook,Available,Walpole Ronald E.,Pearson,EN,2020,9,854,9781292023922,xxx,Mathematics
-47,xzcvzxcvzxcvzxc,ewrw,ReadingBook,Available,erwer,qwdasd,ewrewr,44442,22,4444,33333,asdasda
-48,Introduction to programming in Python,QA 76.73.P98 S43 2015 c.3,TextBook,Available,Wayne Kevin & Dondero Robert,Pearson,EN,2015,8,771,9780134076430,Computer Programming
-49,Personal programming and the object computer,ONLINE,Article,Available,Reenskaug & Trygve M. H.,Universitetet i Oslo,Software and Systems Modeling,Personal Programming,Springer,Personal Programming,Springer Berlin Heidelberg,10.1007/s10270-019-00768-3
-50,Transmitter source location estimation using crowd data,ONLINE,Article,Available,Arif Selcuk Ogrenci & Arsan Taner,Kadir Has University,In Computers and Electrical Engineering,Neural Networks,Elsevier Ltd,10.1016/j.compeleceng.2017.09.026
-51,yyyyyyyyyyyyy,vzxcvzxcvzxcz,Digital,Available,cvzxc,wer,vzxcvzxcv,wer,zxcvxc,44,22,333
-52,wewtwet,vzxcvzxcvzxcz,Digital,Available,cvzxc,wer,vzxcvzxcv,wer,zxcvxc,44,22,333
-54,ftttttttttttttfttttttttttttt,bg,ReadingBook,Available,bgbgbg,gbgb,gbgbgfgdfg,333,11,444,22222222,yyyyy
-55,Kırmizi ve Kar,PQ 2637.A82 B17 2010 c.1,eBook,Available,Orhan Pamuk, Birey Yayıncilik,TR,2002,16,134,9789758618316,Literary Critism
-56,Albert Camus,PQ 2637.A82 B90 2010 c.3,eBook,Available,Edward J. Hughes,Reaktion Books Ltd.,EN,2015,3,216,978-1-78023-493-9
-57,yaprak dökümü,istanbul,Digital,Available,ali rıza bey,za,tototootot,tr,ddd,4444444444,110,3999
-58,askimemnu,istanbul,Digital Available,ali rıza bey,za,tototootot,tr,ddd,4444444444,110,3999
-59,ezel,ist,Digital,Available,uluc,ay,dram,tr,dvd,4444444,222,2009
-60,ezel2,ist,Digital,Available,uluc,ay,dram,tr,dvd,4444444,222,2009
-61,Ermiş,PR 65.2.R5215.2004,ReadingBook,Available,Halil Cibran,Ithaki,TR,2004,9,65,28232491051,Hikaye
-63,zzzzzzzzzzzzzzzzzzz,dsafsd,Digital,Available,fasdfa,ewras,sdfasdfasd,werw,fasdfasd,125125,121,124123
-64,asdfasdf,sadfas,ReadingBook,Available,dfasdf,arasdcasc,asdf,1111,314,234234,23523,adfasdf
-65,Academicus,ONLINE,EJournal,Available,Academicus,2309-1088,Science,http://www.academicus.edu.al/,true
-66,eread1,ONLINE,EReadingBook,Available,author1e,pube,tr,2010,4,52,4213-2512,www.erading.com,fiction
-67,eread2,ONLINE,EReadingBook,Available,author1e,pube,tr,2010,4,52,4213-2512,www.erading.com,fiction
-68,eread2,ONLINE,EReadingBook,Available,asdf,asdf,safasdf,2423,45,12,2412-2123,www.xyz.com,sdfs
-69,Introduction to Compiler Construction in a Java World,ONLINE,ETextBook,Available,Bahar Delibaş,CRC,EN,2013,1,986,1234-1234,https://www.cs.umb.edu/j--/,Computer Science
-70,titletextbookexamp,QR2315123,TextBook,Available,insigne,napoli,IT,2018,9,421,999977773,Mathematics
-72,qqqqqqqqqqd,ONLINE,EJournal,Available,www,124123,ee,cvzxcvzxcvzxcv,false
+8,Inception,PN 1997.A46.S61 2011,Digital,Not Available,Christopher Nolan,Warner Bros,Science Fiction,EN,DVD,8680979011317,148,2010
+9,The fog,PN 1995.9.H6 S57 2005 c.1,Digital,Available,John Carpenter,AVCO Embassy Pictures,Horror,EN,DVD,8693040407209,90,1980
+10,Defence Science Journal,ONLINE,EJournal,Available,Defence Scientific Information & Documentation Centre,2079-3715,Military History & Science,http://publications.drdo.gov.in/ojs/index.php/dsj,true
+11,Probability and statistics for engineers and scientists,ONLINE,ETextBook,Available,Walpole Ronald E.,Pearson,EN,2020,9,854,9781292023922,http://www.springer.com/,Mathematics
+12,Introduction to programming in Python,QA 76.73.P98 S43 2015 c.3,TextBook,Not Available,Wayne Kevin & Dondero Robert,Pearson,EN,2015,8,771,9780134076430,Computer Programming
+13,Personal programming and the object computer,ONLINE,Article,Available,Reenskaug & Trygve M. H.,Universitetet i Oslo,Software and Systems Modeling,Personal Programming,Springer Berlin Heidelberg,10.1007/s10270-019-00768-3
+14,Transmitter source location estimation using crowd data,ONLINE,Article,Available,Arif Selcuk Ogrenci & Arsan Taner,Kadir Has University,In Computers and Electrical Engineering,Neural Networks,Elsevier Ltd,10.1016/j.compeleceng.2017.09.026
+15,Kırmizi ve Kar,ONLINE,EReadingBook,Available,Orhan Pamuk,Birey Yayıncilik,TR,2002,12,134,9789758618316,www.erading.com,Literary Critism
+16,Albert Camus,ONLINE,EReadingBook,Available,Edward J. Hughes,Reaktion Books Ltd,EN,2015,1,216,978-1-78023-493-9,www.xyz.com,Literary Critism
+17,Aski Memnu,istanbul,Digital Available,ali rıza bey,za,tototootot,tr,ddd,4444444444,110,3999
+18,Ermiş,PR 65.2.R5215.2004,ReadingBook,Not Available,Halil Cibran,Ithaki,TR,2004,9,65,28232491051,Hikaye
+19,Academicus,ONLINE,EJournal,Available,Academicus,2309-1088,Science,http://www.academicus.edu.al/,true
+20,Introduction to Compiler Construction in a Java World,ONLINE,ETextBook,Available,Bahar Delibaş,CRC,EN,2013,1,986,1234-1234,https://www.cs.umb.edu/j--/,Computer Science
+21,1984,ONLINE,ETextBook,Available,Orwell,Can,TR,2014,9,459,2124-4212,www.google.com,Fiction
+22,This is England,PN 1995.9.S87 T457 2007 c.1,Digital,Available,Mark Herbert,EM Media,Drama,EN,DVD,5055201801890,98,2006
+23,Cesur Yeni Dünya,PQ 2538.A82 B90 2017 a.3,ReadingBook,Available,Aldous Huxley,Ithaki Yayınlari,TR,2013,23,273,9789756902165,Science Fiction
+24,Korluk,PQ 2238.B82 B10 2012 a.14,ReadingBook,Available,Jose Saramago,Kirmizi Kedi Yayinevi,TR,2017,3,336,9786052980811,Science Fiction
