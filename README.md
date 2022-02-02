@@ -1,4 +1,4 @@
-# library-management-system
+# Library Management System
 CE343 Object Oriented Programming Term Project
 
 ### Contributors
