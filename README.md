@@ -13,7 +13,7 @@ CE343 Object Oriented Programming Term Project
  - [Requirements Document](https://github.com/robuno/library-management-system/blob/master/RequirementsDocument.pdf)
 
 ### Screens that the user will encounter in the program
-![image](https://user-images.githubusercontent.com/75491382/154112064-ea69d0cf-7bff-48ae-a7d9-aa69cb0a657e.png)
+- ![image](https://user-images.githubusercontent.com/75491382/154112064-ea69d0cf-7bff-48ae-a7d9-aa69cb0a657e.png)
 ![image](https://user-images.githubusercontent.com/75491382/154112202-016da1b6-cbe1-4cba-a399-8257fd805dbe.png)
 ![image](https://user-images.githubusercontent.com/75491382/154112227-05049021-216f-499b-852c-770cf2ca0174.png)
 ![image](https://user-images.githubusercontent.com/75491382/154112251-755bf99b-ec38-4ac1-ae04-2cfc269151d3.png)
